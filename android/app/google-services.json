@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "35293989527",
+    "project_id": "coco-seal",
+    "storage_bucket": "coco-seal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35293989527:android:97324a139698fb6a5377d2",
+        "android_client_info": {
+          "package_name": "com.CocoSeal.coco_seal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGeAc88wjN60eZGs9A5o-A-7383bJCpto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
