@@ -12,7 +12,20 @@
           "package_name": "com.CocoSeal.coco_seal"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "35293989527-qptkuvqofrrnv4t7eul5de552s3e59i0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.CocoSeal.coco_seal",
+            "certificate_hash": "0a700c61df6989346515a2b396c828f12bc79e3c"
+          }
+        },
+        {
+          "client_id": "35293989527-dqr1q7d8escv1usj7n8i1pfajfq8c6ah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBGeAc88wjN60eZGs9A5o-A-7383bJCpto"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35293989527-dqr1q7d8escv1usj7n8i1pfajfq8c6ah.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "35293989527-546c8vgqvspo4l9qifde03rt1ppc1mu0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.CocoSeal.cocoSeal"
+              }
+            }
+          ]
         }
       }
     }
