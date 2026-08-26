@@ -80,11 +80,15 @@ class _LoginPageState extends State<LoginPage> {
       loading = true;
     });
 
+    var error = "";
+
     try {
       await GoogleSignIn.instance.initialize();
+      await GoogleSignIn.instance.signOut();
       final GoogleSignInAccount googleUser = await GoogleSignIn.instance.authenticate();
 
       final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+      error = "${googleAuth.idToken}";
 
       final credential = GoogleAuthProvider.credential(idToken: googleAuth.idToken);
 
@@ -98,11 +102,11 @@ class _LoginPageState extends State<LoginPage> {
           backgroundColor: Theme.of(context).colorScheme.error,
         ));
       }
-    } on GoogleSignInException {
+    } on GoogleSignInException catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("Googleアカウントでのログインを取り消しました"),
+          content: Text("${e.description}\n${error}"),
           backgroundColor: Theme.of(context).colorScheme.error,
         ));
       }

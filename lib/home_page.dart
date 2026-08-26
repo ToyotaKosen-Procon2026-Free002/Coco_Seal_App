@@ -1,3 +1,4 @@
+import 'package:coco_seal/api_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -121,8 +122,18 @@ class ParentTableDashboard extends StatefulWidget {
 }
 
 class ParentTableDashboardState extends State<ParentTableDashboard> {
+
+  var userText = "wait";
+
   @override
   Widget build(BuildContext context) {
+    ApiService.fetchUserProfile().then((response) => {
+      setState(() {
+        userText = "${response}";
+      })
+
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("ココ・シール"),
@@ -136,7 +147,9 @@ class ParentTableDashboardState extends State<ParentTableDashboard> {
               await FirebaseAuth.instance.signOut();
             },
             child: const Text("ログアウト"),
-          )
+          ),
+
+          Text("${userText}")
         ],
       ),
     );

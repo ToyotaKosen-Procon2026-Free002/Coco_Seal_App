@@ -9,8 +9,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FirebaseMessaging.instance.requestPermission();
-  String? token = await FirebaseMessaging.instance.getToken();
-  print(token);
 
   runApp(const CocoSealApp());
 }
