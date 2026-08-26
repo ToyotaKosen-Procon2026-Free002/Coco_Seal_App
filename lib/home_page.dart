@@ -123,16 +123,28 @@ class ParentTableDashboard extends StatefulWidget {
 
 class ParentTableDashboardState extends State<ParentTableDashboard> {
 
+  final displayNameTextEditingController = TextEditingController();
+  final emailTextEditingController = TextEditingController();
+
   var userText = "wait";
 
   @override
-  Widget build(BuildContext context) {
-    ApiService.fetchUserProfile().then((response) => {
-      setState(() {
-        userText = "${response}";
-      })
+  void initState() {
+    super.initState();
+    _loadUserProfile();
+  }
 
-    });
+  Future<void> _loadUserProfile() async {
+    final response = await ApiService.fetchUserProfile();
+    if (mounted) {
+      setState(() {
+        userText = "$response";
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
@@ -149,7 +161,33 @@ class ParentTableDashboardState extends State<ParentTableDashboard> {
             child: const Text("ログアウト"),
           ),
 
-          Text("${userText}")
+          Text("${userText}"),
+
+          TextField(
+            controller: displayNameTextEditingController,
+            decoration: const InputDecoration(labelText: "表示名")
+          ),
+
+          TextField(
+            controller: emailTextEditingController,
+            decoration: const InputDecoration(labelText: "メールアドレス"),
+          ),
+
+          ElevatedButton(
+            onPressed: () async {
+              String? displayName = displayNameTextEditingController.text;
+              String? email = emailTextEditingController.text;
+
+              if (displayName == "") displayName = null;
+              if (email == "") email = null;
+
+              var response = "${await ApiService.updateUserProfile(displayName, email)}";
+              setState(() {
+                userText = response;
+              });
+            },
+            child: const Text("情報更新")
+          )
         ],
       ),
     );
